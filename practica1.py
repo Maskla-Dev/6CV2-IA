@@ -27,6 +27,8 @@ class GuessingAgent:
         # Verifica si el jugador ha mentido. Se concluye que el jugador ha mentido cuando el rango de busqueda no es coherente
         if self.min_range > self.max_range:
             self.player_is_lying = True
+            return
+        
         # Genera un numero aleatorio dentro del rango de busqueda
         self.current_guess = random.randint(self.min_range, self.max_range)
         return self.current_guess
@@ -61,15 +63,19 @@ def main():
     print("Bienvenido al juego \"Adivina el numero\"")
     min_range = getDigitInput("Ingrese el valor minimo del rango: ")
     max_range = getDigitInput("Ingrese el valor maximo del rango: ")
+
     # Verifica si el valor minimo y maximo son iguales. Si es asi, solo hay un numero posible, el agente ya lo ha adivinado
     if min_range == max_range:
         print("El valor minimo y maximo son iguales, el agente no puede adivinar el numero")
+
     # Verifica si el valor minimo es mayor al valor maximo
     if min_range > max_range:
         # Si el valor minimo es mayor al valor maximo, se intercambian los valores
         min_range, max_range = max_range, min_range
+
     # Crea una instancia de la clase GuessingAgent
     agent = GuessingAgent(min_range, max_range)
+
     # Ciclo infinito, termina cuando el agente adivina el numero o cuando el jugador miente
     while True:
         # El agente adivina el numero
@@ -88,11 +94,11 @@ def main():
                 # Verifica la respuesta del jugador
                 if user_response == "A":
                     # Si el numero es demasiado alto, se actualiza el rango de busqueda del agente
-                    agent.update_ranges(True)
+                    agent.update_ranges(False)
                     break
                 elif user_response == "B":
                     # Si el numero es demasiado bajo, se actualiza el rango de busqueda del agente
-                    agent.update_ranges(False)
+                    agent.update_ranges(True)
                     break
                 elif user_response == "C":
                     # Si el numero es correcto, el agente ha ganado. Termina el programa
