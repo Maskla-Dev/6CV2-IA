@@ -22,12 +22,47 @@ def string_overview() -> None:
 
     print(f" las cadenas son inmutables, chin")
 
-    # funciones de una cadena
+    ### Funciones de una cadena ###
+    
+    #Concatenación de cadenas
+    str4: str = "podemos " + "agregar " + "cadenas " + "con +" #se pueden concatenar cadenas con +
 
-    str4: str = "podemos " + "agregar " + "cadenas " + "con +"
+    print(f" {str4} \n ") 
 
-    print(f" {str4} \n ")
+    #Longitud de una cadena
+    print(f" la longitud de la cadena es: {len(str4)} \n ") #len() devuelve la longitud de la cadena
 
+    #Indexación de cadenas
+    print(f" el primer caracter de la cadena es: {str4[0]} \n ") #el primer caracter es el 0
+
+    #Segmentacion de cadenas
+    print(f" la cadena desde el caracter 2 al 5 es: {str4[2:6]} \n ") #el caracter 6 no se incluye
+
+    #Busqueda de subcadenas
+    contiene_subcadena: bool = "cadenas" in str4 #in devuelve true si la subcadena se encuentra en la cadena
+    print(f" la subcadena 'cadenas' se encuentra en la cadena: {contiene_subcadena} \n ") 
+
+    #Metodos de transfomacion 
+    print(f" la cadena en mayusculas es: {str4.upper()} \n ") #upper() convierte la cadena a mayusculas
+    print(f" la cadena en minusculas es: {str4.lower()} \n ") #lower() convierte la cadena a minusculas
+    print(f" la cadena en mayusculas es: {str4.capitalize()} \n ") #capitalize() convierte la primera letra de la cadena a mayuscula
+
+    #Busqueda
+    indice = str4.find("cadenas") #find() devuelve el indice de la subcadena
+    print(f" la subcadena 'cadenas' se encuentra en la posicion: {indice} \n ")
+
+    #Reemplazo
+    print(f" la cadena reemplazando 'cadenas' por 'strings' es: {str4.replace('cadenas', 'strings')} \n ") #replace() reemplaza la subcadena por otra
+
+    #Eliminacion de espacios en blanco
+    print(f" la cadena eliminando los espacios a la derecha es: {str4.rstrip()} \n ") #rstrip() elimina los espacios a la derecha
+
+    #División de cadenas 
+    print(f" la cadena separada por espacios es: {str4.split()} \n ") #split() separa la cadena por espacios
+
+    #Union de cadenas
+    print(f" la cadena unida por espacios es: {' '.join(str4.split())} \n ") #join() une la cadena por espacios
+    pass
 
 def list_overview() -> None:
 
@@ -51,11 +86,38 @@ def list_overview() -> None:
 
     print(f" {list2}")
 
-    # funciones de una lista
+    ### Funciones de una lista ###
 
-    for e in list2:             # iterar en una lista
+    #Iterar en una lista
+    for e in list2:             
         print(f" elemento = {e}")
 
+    #Ordenar una lista
+    list2.sort()                # sort() ordena la lista
+    print(f" {list2}")
+
+    #Longitud de una lista
+    print(f" la longitud de la lista es: {len(list2)} \n ") #len() devuelve la longitud de la lista
+
+    #Extender una lista
+    list2.extend(list3)         # extend() extiende la lista con otra lista
+
+    #Acceder al ultimo elemento de una lista
+    print(f" el ultimo elemento de la lista es: {list2[-1]} \n ") #el ultimo elemento es el -1
+    
+    #Modificar un elemento de una lista
+    list2[0] = "yadira"         #se puede modificar un elemento de la lista con el indice 
+    print(f" {list2} \n ")
+
+    #Eliminar un elemento de una lista
+    list2.remove("yadira")      #remove() elimina el elemento de la lista
+    print(f" {list2} \n ")
+
+    #Adicionar otra lista a una lista
+    list2.append(list3)         #append() agrega la lista al final de la lista
+    print(f" {list2} \n ")
+
+    pass
 
 def dict_overview() -> None:
 
@@ -90,11 +152,41 @@ def dict_overview() -> None:
 
     print(f" veamos todo el diccionario modificado: {dict1} ")
 
-    # funciones de un diccionario
+    ### Funciones de un diccionario ###
 
-    for k, v in dict2.items():      # iterar en un diccionario
+    # Iterar en un diccionario
+    for k, v in dict2.items():      
         print(f" llave: {k} - valor: {v}")
 
+    #Longitud de un diccionario
+    print(f" la longitud del diccionario es: {len(dict2)} \n ") #len() devuelve la longitud del diccionario
+
+    #Eliminar un elemento de un diccionario
+    del dict2["p1"]                 #del elimina el elemento del diccionario
+    print(f" {dict2} \n ")
+
+    #Obtener las llaves de un diccionario
+    print(f" las llaves del diccionario son: {dict2.keys()} \n ") #keys() devuelve las llaves del diccionario
+
+    #Obtener los valores de un diccionario
+    print(f" los valores del diccionario son: {dict2.values()} \n ") #values() devuelve los valores del diccionario
+
+    #Obtener clave-valor de un diccionario
+    print(f" las llaves y valores del diccionario son: {dict2.items()} \n ") #items() devuelve las llaves y valores del diccionario
+
+    #Verificar si una llave se encuentra en un diccionario
+    contiene_llave: bool = "p2" in dict2 #in devuelve true si la llave se encuentra en el diccionario
+    print(f" la llave 'p2' se encuentra en el diccionario: {contiene_llave} \n ")
+
+    #Copiar un diccionario
+    dict4 = dict2.copy()            #copy() copia el diccionario
+    print(f" {dict4} \n ")
+
+    #Limpiar un diccionario
+    dict4.clear()                   #clear() limpia el diccionario
+    print(f" {dict4} \n ")
+
+    pass
 
 if __name__ == "__main__":
 
