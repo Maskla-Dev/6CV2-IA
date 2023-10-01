@@ -2,7 +2,7 @@
 from Graph import Node, Graph
 
 
-def depth_first(graph: Graph, start: str):
+def depth_first(graph: Graph, start: str, end: str = None):
 
     root: Node = graph.lookup(start)
 
@@ -15,6 +15,9 @@ def depth_first(graph: Graph, start: str):
     while len(stack) > 0:
         handle = stack.pop()        # use LIFO behavior
         path.append(handle.identifier)
+        if end is not None:
+            if end == handle.identifier:
+                break
         for edge in handle.edges:
             neighbor = edge.walk()
             if not neighbor.state["visited"]:
@@ -24,7 +27,7 @@ def depth_first(graph: Graph, start: str):
     return path
 
 
-def breadth_first(graph: Graph, start: str):
+def breadth_first(graph: Graph, start: str, end: str = None):
 
     root: Node = graph.lookup(start)
 
@@ -37,6 +40,9 @@ def breadth_first(graph: Graph, start: str):
     while len(stack) > 0:
         handle = stack.pop(0)       # use FIFO behavior
         path.append(handle.identifier)
+        if end is not None:
+            if end == handle.identifier:
+                break
         for edge in handle.edges:
             neighbor = edge.walk()
             if not neighbor.state["visited"]:
@@ -68,11 +74,11 @@ def main():
 
     # graph.print()
 
-    traverse = depth_first(graph, "A")
+    traverse = depth_first(graph, "A", "F")
     print(f"Búsqueda en Produndidad: {traverse}")
 
     graph.reset()
-    traverse = breadth_first(graph, "A")
+    traverse = breadth_first(graph, "A", "F")
     print(f"Búsqueda en Anchura: {traverse}")
 
 
