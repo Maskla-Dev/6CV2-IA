@@ -7,43 +7,43 @@ def depth_first(graph: Graph, start: str):
     root: Node = graph.lookup(start)
 
     stack = []      # List[Node]
-    path = ""
+    path = []       # List[str]
 
     stack.append(root)
     root.state["visited"] = True
 
     while len(stack) > 0:
         handle = stack.pop()        # use LIFO behavior
-        path += handle.identifier
+        path.append(handle.identifier)
         for edge in handle.edges:
             neighbor = edge.walk()
             if not neighbor.state["visited"]:
                 stack.append(neighbor)
                 neighbor.state["visited"] = True
 
-    print(path)
+    return path
 
 
 def breadth_first(graph: Graph, start: str):
 
     root: Node = graph.lookup(start)
 
-    stack = []
-    path = ""
+    stack = []      # List[Node]
+    path = []       # List[str]
 
     stack.append(root)
     root.state["visited"] = True
 
     while len(stack) > 0:
         handle = stack.pop(0)       # use FIFO behavior
-        path += handle.identifier
+        path.append(handle.identifier)
         for edge in handle.edges:
             neighbor = edge.walk()
             if not neighbor.state["visited"]:
                 stack.append(neighbor)
                 neighbor.state["visited"] = True
 
-    print(path)
+    return path
 
 
 def main():
@@ -68,9 +68,12 @@ def main():
 
     # graph.print()
 
-    depth_first(graph, "A")
+    traverse = depth_first(graph, "A")
+    print(f"Búsqueda en Produndidad: {traverse}")
+
     graph.reset()
-    breadth_first(graph, "A")
+    traverse = breadth_first(graph, "A")
+    print(f"Búsqueda en Anchura: {traverse}")
 
 
 main()
