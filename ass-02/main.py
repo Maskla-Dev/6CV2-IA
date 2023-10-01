@@ -50,17 +50,21 @@ def main():
 
     graph = Graph(name="Graph Test")
 
-    letters = "ABCDE"
+    letters = "ABCDEFGHIJK"
 
     for letter in letters:
         graph.add(Node(identifier=letter))
 
     graph.connect("A", "B", 1)
     graph.connect("A", "C", 1)
-    graph.connect("A", "D", 1)
-    graph.connect("B", "C", 1)
-    graph.connect("C", "D", 1)
-    graph.connect("C", "E", 1)
+    graph.connect("B", "D", 1)
+    graph.connect("B", "E", 1)
+    graph.connect("E", "H", 1)
+    graph.connect("E", "I", 1)
+    graph.connect("C", "F", 1)
+    graph.connect("C", "G", 1)
+    graph.connect("F", "J", 1)
+    graph.connect("F", "K", 1)
 
     # graph.print()
 
