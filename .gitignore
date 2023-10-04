@@ -160,3 +160,10 @@ cython_debug/
 #.idea/
 
 .vscode
+/.idea/6CV2-IA.iml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/misc.xml
+/.idea/.gitignore
