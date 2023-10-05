@@ -1,21 +1,23 @@
 
 class Board:
 
-    def __init__(self, board, turn):
-        self.board = board      # List[str]
+    def __init__(self, matrix, turn):
+        self.matrix = matrix      # List[str]
         self.available = []     # List[int]
         self.turn = turn        # str
 
-        for index, fig in enumerate(board):
+        for index, fig in enumerate(matrix):
             if fig == "-":      # Empty Square
                 self.available.append(index)
 
     def fill(self, index):
-        self.board[index] = "o" if self.turn == "min" else "x"
+        tmp_matrix = self.matrix[:]
+        tmp_matrix[index] = self.turn
+        return tmp_matrix
 
-    def print(self):
-        print(f"{self.board[0]}|{self.board[1]}|{self.board[2]}")
-        print("-----")
-        print(f"{self.board[3]}|{self.board[4]}|{self.board[5]}")
-        print("-----")
-        print(f"{self.board[6]}|{self.board[7]}|{self.board[8]}")
+    def print(self, child_factor=0):
+        space = child_factor * " "
+        print(f"{space}{self.matrix[0]}|{self.matrix[1]}|{self.matrix[2]}")
+        print(f"{space}{self.matrix[3]}|{self.matrix[4]}|{self.matrix[5]}")
+        print(f"{space}{self.matrix[6]}|{self.matrix[7]}|{self.matrix[8]}")
+        print("")
