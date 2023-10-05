@@ -20,12 +20,18 @@ def minimax(root: Node):
 
 def main():
 
+    # initial_board = ["o", "x", "o",
+    #                  "-", "x", "o",
+    #                  "-", "-", "x"]
+
     initial_board = ["o", "x", "o",
                      "-", "x", "o",
                      "-", "o", "x"]
 
-    initial_node = Node(identifier="", content=Board(matrix=initial_board, turn="x"))
+    initial_node = Node(identifier="", content=Board(matrix=initial_board, turn="o"))
     minimax(initial_node)
+
+    initial_node.print_children()
 
 
 main()
