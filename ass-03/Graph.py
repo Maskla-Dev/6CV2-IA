@@ -9,12 +9,6 @@ class Edge:
     def __str__(self):
         return f"{self.source} to {self.target} costs {self.weight}"
 
-    def walk(self):         # -> Node
-        return self.target
-
-    def charge(self):       # -> int
-        return self.weight
-
 
 class Node:
 
@@ -47,8 +41,6 @@ class Graph:
     def __init__(self, name):
         # ID
         self.name = name        # str
-        # Status
-        # self.state = {}
         # Node Lookup
         self.nodes = []         # List[Node]
 
