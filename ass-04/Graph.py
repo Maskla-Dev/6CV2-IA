@@ -27,6 +27,11 @@ class Node:
     def __str__(self):
         return f"{self.identifier}"
 
+    def print_children(self, child_factor=0):
+        self.content.print(child_factor)
+        for edge in self.edges:
+            edge.target.print_children(child_factor+1)
+
     def lookup(self, identifier):       # -> Edge or None
         for edge in self.edges:
             if edge.target.identifier == identifier:
@@ -34,8 +39,10 @@ class Node:
         return None
 
     def connect(self, target, weight):  # target: Node, weight: int
-        if self.lookup(target.identifier) is None:
-            self.edges.append(Edge(self, target, weight))
+        self.edges.append(Edge(self, target, weight))
+        # this condition only works when using unique identifiers for each node
+        # if self.lookup(target.identifier) is None:
+        #     self.edges.append(Edge(self, target, weight))
 
 
 class Graph:
