@@ -16,7 +16,7 @@ class Board:
         return tmp_matrix
 
     def print(self, child_factor=0):
-        space = child_factor * " "
+        space = child_factor * "  "
         print(f"{space}{self.matrix[0]}|{self.matrix[1]}|{self.matrix[2]}")
         print(f"{space}{self.matrix[3]}|{self.matrix[4]}|{self.matrix[5]}")
         print(f"{space}{self.matrix[6]}|{self.matrix[7]}|{self.matrix[8]}")
