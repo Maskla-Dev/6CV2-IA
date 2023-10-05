@@ -12,13 +12,15 @@ class Edge:
 
 class Node:
 
-    def __init__(self, identifier):
+    def __init__(self, identifier, content = None):
         # ID
         self.identifier = identifier    # str
         # Status
         self.state = {                  # Dict[str, bool]
             "visited": False
         }
+        # Content
+        self.content = content
         # Edge Lookup
         self.edges = []                 # List[Edge]
 
