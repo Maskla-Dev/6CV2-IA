@@ -24,11 +24,11 @@ def main():
     #                  "-", "x", "o",
     #                  "-", "-", "x"]
 
-    initial_board = ["o", "x", "o",
-                     "-", "x", "o",
-                     "-", "o", "x"]
+    initial_board = ["o", "x", "-",
+                     "-", "-", "-",
+                     "-", "-", "-"]
 
-    initial_node = Node(identifier="", content=Board(matrix=initial_board, turn="o"))
+    initial_node = Node(identifier="", content=Board(matrix=initial_board, turn="x"))
     minimax(initial_node)
 
     initial_node.print_children()
