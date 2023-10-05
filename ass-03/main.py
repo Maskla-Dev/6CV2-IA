@@ -1,5 +1,36 @@
+import random
 
 from Graph import Graph, Node
+
+
+def hill_climbing(graph: Graph, start: str, finish: str):
+
+    current = graph.lookup(start)
+    travel = []
+
+    travel += current.identifier
+
+    while current.identifier != finish:
+
+        contestants = []
+
+        if len(current.edges) > 0:
+            min_cost = current.edges[0].weight
+
+            # Find the lowest cost
+            for edge in current.edges:
+                if edge.weight < min_cost:
+                    min_cost = edge.weight
+
+            # Find transitions
+            for edge in current.edges:
+                if edge.weight == min_cost:
+                    contestants.append(edge.target)
+
+        current = random.choice(contestants)
+        travel += current.identifier
+
+    print(travel)
 
 
 def main():
@@ -49,6 +80,8 @@ def main():
     graph.lookup("K").connect(target=graph.lookup("L"), weight=2)
 
     graph.print()
+
+    hill_climbing(graph, "A", "L")
 
 
 main()
