@@ -11,7 +11,7 @@ class Board:
                 self.available.append(index)
 
     def fill(self, index):
-        tmp_matrix = self.matrix[:]
+        tmp_matrix = self.matrix[:]     # generar una deep copy, no una referencia
         tmp_matrix[index] = self.turn
         return tmp_matrix
 
