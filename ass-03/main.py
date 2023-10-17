@@ -4,39 +4,30 @@ from Graph import Graph, Node
 
 
 def hill_climbing(graph: Graph, start: str, finish: str, minmax: str = "min"):
-
     current = graph.lookup(start)
     travel = []
-
     travel += current.identifier
-
     while current.identifier != finish:
-
         contestants_min = []
         contestants_max = []
-
         if len(current.edges) > 0:
             max_cost = min_cost = current.edges[0].weight
-
             # Find the lowest cost
             for edge in current.edges:
                 if edge.weight < min_cost:
                     min_cost = edge.weight
                 if edge.weight > max_cost:
                     max_cost = edge.weight
-
             # Find transitions
             for edge in current.edges:
                 if edge.weight == min_cost:
                     contestants_min.append(edge.target)
                 if edge.weight == max_cost:
                     contestants_max.append(edge.target)
-
         if minmax == "max":
             current = random.choice(contestants_max)
         else:
             current = random.choice(contestants_min)
-
         travel += current.identifier
 
     print(travel)
@@ -46,7 +37,7 @@ def main():
 
     graph = Graph(name="Algorithms")
 
-    letters  = "ABCDEFGHIJKL"
+    letters = "ABCDEFGHIJKL"
 
     for letter in letters:
         graph.add(Node(identifier=letter))
