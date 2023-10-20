@@ -22,7 +22,40 @@ def minimax(root: Node):
             tmp_child = Node(identifier="", content=tmp_board)      # nodo temporal
             current.connect(target=tmp_child, weight=0)             # conexión como hijo al nodo actual
             stack.append(tmp_child)                                 # agregamos al "recorrido" del árbol
+    path = [root]
+    while len(path[-1].edges)
+        path.push(get_best(path[-1]))
 
+
+def get_best(node)
+    best_move = None
+    best_eval = -infinity
+    for child in node.edges
+        eval = evaluate(child, depth, False)
+        if eval > best_eval:
+            best_eval = eval
+            best_move = child.target
+        return best move
+
+def evaluate(edge, depth, is_maximizing_player):
+    result = edge.target.content.check_winner()
+    if depth == 0 or result != None:
+        edge.weight = 1 if result == 'o' else -1
+        return edge.weight
+    
+    if is_maximizing_player:
+        max_eval = -infinity
+        for child in node.children.edge:
+            eval = evaluate(child, depth - 1, False)
+            max_eval = max(max_eval, eval)
+        edge.weight = max_eval
+    else:
+        min_eval = +infinity
+        for child in node.children:
+            eval = minimax(child, depth - 1, True)
+            min_eval = min(min_eval, eval)
+        edge.weight = min_eval
+        
 
 def main():
 
@@ -35,9 +68,9 @@ def main():
     #                  "-", "-", "-"]
 
     initial_node = Node(identifier="", content=Board(matrix=initial_board, turn="o"))
-    minimax(initial_node)
+    path = minimax(initial_node)
 
     initial_node.print_children()
-
+    print(f"{path}")
 
 main()
