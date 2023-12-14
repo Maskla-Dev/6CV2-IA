@@ -21,11 +21,17 @@ def main():
     # Obtener etiquetas del conjunto de datos.
     y = dataset.target
     print(f"Etiquetas: {y}\n")
-    # Separar los datos para entrenamiento y pruebas
+    # Separar los datos para entrenamiento y pruebas.
     X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
-    # Mostrar datos separados
+    # Mostrar datos separados.
     print(f"X train: {X_train}\n\n X test: {X_test}\n")
     print(f"y train: {y_train}\n\n y test: {y_test}\n")
+    # Importar escalador.
+    scaler = preprocessing.StandardScaler()
+    # Escalar.
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.fit_transform(X_test)
+    print(f"X train post-scale: {X_train}\n\n X test post-scale: {X_test}")
 
 
 main()
